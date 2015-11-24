@@ -44,7 +44,11 @@ new File('step3.txt').eachLine { line ->
 		process2.waitForProcessOutput(System.out, System.err)
 		process2.waitFor()
 
-		results << "update Books set isS3Ready=1 where eBookGuid='${uuid}'"
+		def pagesN = new File(pagesDir).listFiles().findAll { it.name.endsWith('.jpg') }.size()
+
+		def sqlUpdate = "update Books set isS3Ready=1, totalPages=${pagesN} where eBookGuid=UPPER('${uuid}');"
+
+		results << sqlUpdate
 	}
 	else {
 		ant.delete(dir: pagesDir)

@@ -9,7 +9,8 @@ def process = synccmd.execute()
 process.waitForProcessOutput(System.out, System.err)
 process.waitFor()
 
-
-//new File('step4.txt').eachLine { line ->
-//}
+/*
+new File('step4.txt').eachLine { line ->
+}
+*/
 

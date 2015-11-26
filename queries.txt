@@ -1,0 +1,1 @@
+select Books.eBookGuid from SiteBook inner join Books on SiteBook.BookId=Books.id where SiteBook.SiteId=24 and Books.makingStatus=2 and Books.isS3Ready=0 order by Books.name

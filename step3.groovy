@@ -46,9 +46,9 @@ new File('step3.txt').eachLine { line ->
 
 		def pagesN = new File(pagesDir).listFiles().findAll { it.name.endsWith('.jpg') }.size()
 
-		def sqlUpdate = "update Books set isS3Ready=1, totalPages=${pagesN} where eBookGuid=UPPER('${uuid}');"
+		//def sqlUpdate = "update Books set isS3Ready=1, totalPages=${pagesN} where eBookGuid=UPPER('${uuid}');"
 
-		results << sqlUpdate
+		results << "${uuid}\t${pagesN}"
 	}
 	else {
 		ant.delete(dir: pagesDir)
